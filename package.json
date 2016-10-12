@@ -1,10 +1,10 @@
 {
-  "name": "newedenfaces",
+  "name": "systemvoting",
   "description": "Character voting app for EVE Online",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/newedenfaces-react"
+    "url": "https://github.com/crisovando/SystemVoting"
   },
   "main": "server.js",
   "scripts": {
@@ -22,7 +22,6 @@
     "compression": "^1.6.0",
     "express": "^4.13.3",
     "history": "^1.13.0",
-    "mongoose": "^4.2.5",
     "morgan": "^1.6.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
