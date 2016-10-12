@@ -8,7 +8,7 @@ class FooterActions {
         );
     }
 
-    getTopCharaacters() {
+    getTopCharacters() {
         $.ajax({ url: '/api/characters/top' })
             .done((data) => {
                 this.actions.getTopCharactersSuccess(data)
