@@ -132,7 +132,7 @@ var NavbarActions = function () {
     value: function getCharacterCount() {
       var _this2 = this;
 
-      $.ajax({ url: '/api/characters/count' }).done(function (data) {
+      $.ajax({ url: '/api/character/count' }).done(function (data) {
         _this2.actions.getCharacterCountSuccess(data);
       }).fail(function (jqXhr) {
         _this2.actions.getCharacterCountFail(jqXhr);
@@ -1579,15 +1579,15 @@ var NavbarStore = function () {
 
   _createClass(NavbarStore, [{
     key: 'onFindCharacterSuccess',
-    value: function onFindCharacterSuccess(payLoad) {
-      payLoad.history.pushState(null, '/characters/' + payLoad.characterId);
+    value: function onFindCharacterSuccess(payload) {
+      payload.history.pushState(null, '/characters/' + payload.characterId);
     }
   }, {
     key: 'onFindCharacterFail',
-    value: function onFindCharacterFail(payLoad) {
-      payLoad.searchForm.classList.add('shake');
+    value: function onFindCharacterFail(payload) {
+      payload.searchForm.classList.add('shake');
       setTimeout(function () {
-        payLoad.searchForm.classList.remove('shake');
+        payload.searchForm.classList.remove('shake');
       }, 1000);
     }
   }, {
@@ -1598,7 +1598,7 @@ var NavbarStore = function () {
   }, {
     key: 'onUpdateAjaxAnimation',
     value: function onUpdateAjaxAnimation(className) {
-      this.ajaxAnimationClass = className;
+      this.ajaxAnimationClass = className; //fadein or fadeout
     }
   }, {
     key: 'onUpdateSearchQuery',

@@ -10,14 +10,14 @@ class NavbarStore {
     this.ajaxAnimationClass = '';
   }
 
-  onFindCharacterSuccess(payLoad) {
-    payLoad.history.pushState(null, '/characters/' + payLoad.characterId);
+  onFindCharacterSuccess(payload) {
+    payload.history.pushState(null, '/characters/' + payload.characterId);
   }
 
-  onFindCharacterFail(payLoad) {
-    payLoad.searchForm.classList.add('shake');
+  onFindCharacterFail(payload) {
+    payload.searchForm.classList.add('shake');
     setTimeout(() => {
-      payLoad.searchForm.classList.remove('shake');
+      payload.searchForm.classList.remove('shake');
     }, 1000);
   }
 
@@ -26,7 +26,7 @@ class NavbarStore {
   }
 
   onUpdateAjaxAnimation(className) {
-    this.ajaxAnimationClass = className;
+    this.ajaxAnimationClass = className; //fadein or fadeout
   }
 
   onUpdateSearchQuery(event) {
