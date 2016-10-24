@@ -12,19 +12,19 @@ class AddCharacterActions {
     );
   }
 
-  addCharacter(name, gender) {
+  addCharacter(name, gender){
     $.ajax({
       type: 'POST',
       url: '/api/characters',
-      data: { name: name, gender: gender }
+      date: { name: name, gender: gender }
     })
-      .done((data) => {
-        this.actions.addCharacterSuccess(data.message);
-      })
-      .fail((jqXhr) => {
-        this.actions.addCharacterFail(jqXhr.responseJSON.message);
-      });
+    .done((data) => {
+      this.actions.addCharacterSuccess(data.message);
+    })
+    .fail((jqXhr) => {
+      this.actions.addCharacterFail(jqXhr.responseJSON.message);
+    });
   }
 }
 
-export default alt.createActions(AddCharacterActions);  
+export default alt.createActions(AddCharacterActions);

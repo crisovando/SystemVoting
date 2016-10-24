@@ -6,19 +6,19 @@ class AddCharacterStore {
     this.bindActions(AddCharacterActions);
     this.name = '';
     this.gender = '';
-    this.helpBlock = '';
+    this.helpblock = '';
     this.nameValidationState = '';
     this.genderValidationState = '';
   }
 
-  onAddCharacterSuccess(successMessage) {
+  onCharacterSuccess(successMessage) {
     this.nameValidationState = 'has-success';
-    this.helpBlock = successMessage;
+    this.helpblock = successMessage
   }
 
-  onAddCharacterFail(errorMessage) {
+  onCharacterFail(errorMessage) {
     this.nameValidationState = 'has-error';
-    this.helpBlock = errorMessage;
+    this.helpblock = successMessage
   }
 
   onUpdateName(event) {
@@ -32,9 +32,9 @@ class AddCharacterStore {
     this.genderValidationState = '';
   }
 
-  onInvalidName() {
+  onInvalidName(){
     this.nameValidationState = 'has-error';
-    this.helpBlock = 'Please enter a character name.';
+    this.helpBlock = 'Por favor ingrese un nombre'
   }
 
   onInvalidGender() {

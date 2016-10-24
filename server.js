@@ -119,12 +119,41 @@ app.post('/api/characters', (req, res, next) => {
 
           } catch (e) {
             res.status(404).send({ message: characterName + ' is not a registered citizen of New Eden.' });
-          } 
+          }
         });
       });
     }
   ]);
 });
+
+app.get('/api/characters', (req, res, next) => {
+  var choices = ['Female', 'Male'];
+  var randomGender = _.sample(choices);
+
+  //{ random: { $near: [Math.random(), 0] }
+  db.character.find({ voted : false, gender: randomGender }).limit(2, (err, docs) => {
+    if (err) return next(err);
+
+    if (characters.length === 2) {
+      return res.send(characters);
+    }
+
+    var oppositeGender = _.first(_.without(choices, randomGender));
+
+    db.character.find({ random: { $near: [Math.random(), 0], voted: false, gender: oppositeGender }).limit(2, (err, doc) => {
+      if (err) return next(err);
+
+      if( characters.length === 2){
+        return res.send(characters);
+      }
+
+      db.character.update({}, { $set: { voted: false } }, { multi: true }, (err) => {
+        if (err) return next(err);
+        res.send([]);
+      })
+    })
+  })
+})
 
 db.on('connect', function () {
     console.log('database connected')
